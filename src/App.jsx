@@ -1,13 +1,19 @@
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+
+// import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { GetAPI } from './component/GetAPI'
+import SearchApi from "./component/SearchApi";
+// import { GetAPI } from './component/GetAPI'
 
 
-function App() {
+const App=() => {
 
   return (
-    <>
-    <GetAPI/>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<SearchApi/>} />
+      </Routes>
+    </Router>
   )
 }
 

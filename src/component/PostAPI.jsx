@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {Button} from 'flowbite-react'
+import { Button } from 'flowbite-react';
 
-const apiLink = 'http://49.13.2.10:4000/todos/'
+const apiLink = 'http://49.13.2.10:4000/todos/';
 
 const AxiosPost = () => {
-    const [post, setPost] = useState([]);
+    const [post, setPost] = useState({});
 
     useEffect(() => {
-        axios.get(${apiLink}/1)
+        axios.get(apiLink + '1')
             .then((response) => {
-            console.log(response.data)
-            setPost(response.data)
+            console.log(response.data);
+            setPost(response.data);
         })
-    }, [])
-    
+    }, []);
+
     function postRequest() {
         axios.post(apiLink, {
             title: "I am changed",
-            completed:"razor"
+            completed: "razor"
         }).then((response) => {
-            console.log(response)
-            setPost(response.data)
+            console.log(response);
+            // Update the state with the new post object, if applicable
+            if (response.data) {
+                setPost(response.data);
+            }
         })
     }
  
